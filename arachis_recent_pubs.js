@@ -4,13 +4,12 @@ JS functions for the arachis_recent_pubs module
 
 /*
  *Sudhansu Dash
- *Mar-01-2016
+ *Mar-24-2016
  *
  */
 
 /* TODO:
- *Handle truncated list for display
- *but try pubmed url with whole list (@Think about this)
+ *
  *
  */
 
@@ -79,7 +78,7 @@ function makeHtmlFromEsummaryJson(esummaryJson) {  //NOT DONE YET winProgress
 //The main function
 //=================
 
-function FillDomElementWithRecentPubsHtml (genus, period, domElementId) {
+function FillDomElementWithRecentPubsHtml (period, domElementId) {
     
     var message = "";
     var messageInitial = "<span style='font-size:1.5em;color:#999999'>Please wait: Gettting data from Pubmed ...   ...   ...</span>";
@@ -87,10 +86,10 @@ function FillDomElementWithRecentPubsHtml (genus, period, domElementId) {
     jQuery("#" + domElementId).html (messageInitial);
     
     //Get the selected genus and periods from form
-    genus = jQuery("form#genus  option:selected").val()
+    //genus = jQuery("form#genus  option:selected").val()
     period = jQuery("form#period  input:checked").val()   
     
-    console.log("genus: " + genus); //debug
+    //console.log("genus: " + genus); //debug
     console.log("period: " + period); //debug
     
     //Set up htmlContent
@@ -101,10 +100,10 @@ function FillDomElementWithRecentPubsHtml (genus, period, domElementId) {
     
     var BaseUrlEsearch = "http:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json";
     //var query = genus + "[MeSH+Terms]" + "+OR+" + genus + "[All+Fields]" + "+AND+" + "genetics" + "[MeSH+Terms]" +
-                "+AND+" + "(\"last+" + period + "+months\"[PDAT]))"; // + "&cmd=DetailsSearch" ;
-    var query = "&" + "term=" + "(" + genus + "[Title/Abstract]" + "+AND+" 
-        + "\"last+" + period + "+months\"[PDat]" + ")"
-        + "&retmax=10000";
+                "+AND+" + "(\"last+" + period + "+months\"[PDAT]))" + "&retmax=10000"; // + "&cmd=DetailsSearch" ;
+    var searchTerm = "("+ "(Arachis[Title/Abstract]" + "+NOT+" + "(Allerg*[Title/Abstract]+OR+toxi*[Title/Abstract]+OR+Asperg*[Title/Abstract]+OR+animal*[Title/Abstract])";
+    var query = "&" + "term=" + searchTerm + "+AND+" + "\"last+" + period + "+months\"[PDat]" + ")"
+       ;
     var UrlEsearch = BaseUrlEsearch + query; //returns json obj
     console.log("UrlEsearch: " + UrlEsearch);
 
@@ -162,7 +161,7 @@ function FillDomElementWithRecentPubsHtml (genus, period, domElementId) {
             console.log("pubmedUrl: " + pubmedUrl);
             
             message = "<span>" + "Found&nbsp;<b>" + esearchCount + "</b>" + messageAddendum + "&nbsp;publications for " 
-                      + "<b>"+ genus + "</b> at Pubmed " + " published in the last <b>" + period + "</b> month(s):"
+                      + "<b>"+ /*genus +*/ "</b> at Pubmed " + " published in the last <b>" + period + "</b> month(s):"
                       +"</span>";
             pubmedLink = " <a href=\"" + pubmedUrl + "\"  target=\"_blank\"> (Link to Pubmed) </a>";
             //htmlContent += message + "<br/><br/>";            

@@ -14,8 +14,8 @@
 function arachis_recent_pubs_menu() {
   $items = array();
   $items['publications/arachis_recent_pubs'] = array( //this creates a URL
-    'title' => 'Recent Legume Publications', //page title
-    'description' => 'List of recent legume publications from Pubmed via Eutils and JS http request.',
+    'title' => 'Recent Peanut Publications', //page title
+    'description' => 'List of recent peanut/Arachis publications from Pubmed via Eutils and JS http request.',
     'page callback' => arachis_recent_pubs_page_callback, //this function called when page accessed. For form, use drupal_get_form
     //'page arguments' => array('grin_acc_query_form'), //form name here // No need if page callback fn() doesn't need it.
     'access callback' => TRUE,
@@ -43,12 +43,9 @@ function arachis_recent_pubs_theme() {
 
 function arachis_recent_pubs_page_callback() {
     
-    $genus = "Phaseolus";
-    $genera = ['Arachis', 'Phaseolus', 'Cicer'];
-    
+    //$genus = "Arachis";
     $period = 3;
     
-    
-    return theme ('arachis_recent_pubs_page_template', array('genus'=>$genus, 'period'=>$period)); 
+    return theme ('arachis_recent_pubs_page_template', array(/*'genus'=>$genus, */'period'=>$period)); 
 
 }

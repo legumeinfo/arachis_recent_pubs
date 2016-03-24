@@ -1,9 +1,9 @@
 name = arachis_recent_pubs
-description = List recent publications on legumes from Pubmed via Eutils and JS http requests.
+description = List recent publications on peanut/arachis from Pubmed via Eutils and JS http requests. Derived from lis_legume_recent_pubs modules at LIS.
 core = 7.x
 files[] = arachis_recent_pubs.module
 
-package = LIS
+package = PeanutBase
 ;dependencies[] = 
 ;dependencies[] = 
 ;files[] = 

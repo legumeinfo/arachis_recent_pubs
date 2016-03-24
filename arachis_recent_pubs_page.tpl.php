@@ -1,12 +1,12 @@
 <!-- Title and guide text  -->
 <div>
-  <h1>Recent Legume Publications from Pubmed</h1>
+  <h1>Recent <i>Arachis</i> Publications from Pubmed</h1>
 </div>
 
 
 <script  type="text/javascript"  src="/sites/all/modules/arachis_recent_pubs/arachis_recent_pubs.js"></script>
 <script>
-  var genus = <?php echo $genus ?>;
+  //var genus = <?php echo $genus ?>;
   var period = <?php echo $period ?>;
 </script>
 
@@ -45,11 +45,14 @@
 <!--   Genus Dropdown  -->
 <div>
   <fieldset>
+          <!--
   <form id="genus" action="">
     <b>Genus:&nbsp;&nbsp;</b>  
     <select  id="genus" onchange="FillDomElementWithRecentPubsHtml (this.options[this.selectedIndex].value, period, 'publications'); console.log('selected-option-value: ' + this.options[this.selectedIndex].value);">
+        <option value="Arachis"  selected="selected">  Arachis  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <option value="legume">&nbsp;&nbsp;Legume  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+
         <option value="Apios">  Apios  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-        <option value="Arachis">  Arachis  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Cajanus">  Cajanus  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Chamaecrista">  Chamaecrista  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <option value="Cicer">  Cicer  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
@@ -59,28 +62,32 @@
         <option value="Lotus japonicus">  Lotus (japonicus) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Lupinus">  Lupinus  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Medicago">  Medicago  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-        <option value="Phaseolus" selected="selected">  Phaseolus  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <option value="Phaseolus">  Phaseolus  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Pisum">  Pisum  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </option>          
         <option value="Trifolium">  Trifolium  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Vicia">  Vicia  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
         <option value="Vigna">  Vigna  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-        <option value="legume">&nbsp;&nbsp;Legume  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-    </select>  <!-- mentioned in Title or Abstract -->
+        
+       
+    </select>   
   </form>
+  -->
+  
 
 
     <form id="period"  action="">
             <!--<legend>Period:</legend><br>-->
             <b>Period:</b>&nbsp;&nbsp;
-            <input type="radio" name="period" value="1"  onclick="FillDomElementWithRecentPubsHtml (genus, this.value, 'publications');">&nbsp;&nbsp;Last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="period" value="3"  checked="checked"  onclick="FillDomElementWithRecentPubsHtml (genus, this.value, 'publications');">&nbsp;&nbsp;Last 3 months&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="period" value="6"  onclick="FillDomElementWithRecentPubsHtml (genus, this.value, 'publications');">&nbsp;&nbsp;Last 6 months
+            <input type="radio" name="period" value="1"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="period" value="3"  checked="checked"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 3 months&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="period" value="6"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 6 months
     </form>
     </fieldset>
     
-<!--  <p style="font-size:70%">**Known issues: Shows non-genetics, clinical articles from Pubmed particularly for Glycine.</p>  -->
-<span style="font-size: 80%;">(<i>Content created with up-to-date data from NCBI Pubmed database</i>)</span>
+  <!-- <p style="font-size:70%"></p> -->
+<span style="font-size: 80%;"><strong>**Please note:</strong> Our search strategy excludes articles containing the terms, allerg*, toxi*, Asperg* and animal* in the title and abstract.  This helps us avoid listing many bio-medical and clinical articles from Pubmed.
+<br/>(<i>Content created with up-to-date data from NCBI Pubmed database</i>)</span>
 </div>
 <hr/>
 
@@ -94,7 +101,7 @@ echo  "(From tpl.php::)  Selected genus, period: ".$genus.", ".$period;
 
 <script>
   //For initial page loading before user interaction
-FillDomElementWithRecentPubsHtml (genus, period, 'publications');
+FillDomElementWithRecentPubsHtml (/*genus, */period, 'publications');
 </script>    
 
 
