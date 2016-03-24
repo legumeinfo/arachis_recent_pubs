@@ -16,7 +16,7 @@ JS functions for the arachis_recent_pubs module
 
 
 
-function makeHtmlFromEsummaryJson(esummaryJson) {  //NOT DONE YET winProgress
+function makeHtmlFromEsummaryJson(esummaryJson) {  
     //Given a jsonObj from eSummary, generates html <li> for display of Docsummary
     //The jsonOBj could be for one or multiple eSummaries
     // jsonObj passed from jQuery.get(url, f())
@@ -24,8 +24,6 @@ function makeHtmlFromEsummaryJson(esummaryJson) {  //NOT DONE YET winProgress
     //USAGE:
     //domElementIdHtml += makeHtmlFromEsummaryJson(esummaryJson);
     
-    
-    //TO DO  Take code from getDocSumAttributesFromJson (id)
     var esummaryResult = esummaryJson.result;  //main json obj containing uids list and summary for each uid
     var uidsList = esummaryResult.uids;  // array of all uids in the jsonObj from eSummary
       //(.result.uids is from the ncbi esummary json)
@@ -85,25 +83,18 @@ function FillDomElementWithRecentPubsHtml (period, domElementId) {
     //Show intial message
     jQuery("#" + domElementId).html (messageInitial);
     
-    //Get the selected genus and periods from form
-    //genus = jQuery("form#genus  option:selected").val()
+    //Get the periods from form
     period = jQuery("form#period  input:checked").val()   
     
-    //console.log("genus: " + genus); //debug
     console.log("period: " + period); //debug
     
     //Set up htmlContent
     var htmlContent = "";
 
     //Construct Esearch URL
-    //Obsolete Example(works): http://www.ncbi.nlm.nih.gov/pubmed?term=Phaseolus+genetics+AND+%28%22last+12+months%22[PDat]%29&cmd=DetailsSearch
-    
     var BaseUrlEsearch = "http:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json";
-    //var query = genus + "[MeSH+Terms]" + "+OR+" + genus + "[All+Fields]" + "+AND+" + "genetics" + "[MeSH+Terms]" +
-                "+AND+" + "(\"last+" + period + "+months\"[PDAT]))" + "&retmax=10000"; // + "&cmd=DetailsSearch" ;
     var searchTerm = "("+ "(Arachis[Title/Abstract]" + "+NOT+" + "(Allerg*[Title/Abstract]+OR+toxi*[Title/Abstract]+OR+Asperg*[Title/Abstract]+OR+animal*[Title/Abstract])";
-    var query = "&" + "term=" + searchTerm + "+AND+" + "\"last+" + period + "+months\"[PDat]" + ")"
-       ;
+    var query = "&" + "term=" + searchTerm + "+AND+" + "\"last+" + period + "+months\"[PDat]" + ")";
     var UrlEsearch = BaseUrlEsearch + query; //returns json obj
     console.log("UrlEsearch: " + UrlEsearch);
 
@@ -160,8 +151,8 @@ function FillDomElementWithRecentPubsHtml (period, domElementId) {
             var pubmedUrl = "http://www.ncbi.nlm.nih.gov/pubmed/" + esearchIdlist900Max.join();
             console.log("pubmedUrl: " + pubmedUrl);
             
-            message = "<span>" + "Found&nbsp;<b>" + esearchCount + "</b>" + messageAddendum + "&nbsp;publications for " 
-                      + "<b>"+ /*genus +*/ "</b> at Pubmed " + " published in the last <b>" + period + "</b> month(s):"
+            message = "<span>" + "Found&nbsp;<b>" + esearchCount + "</b>" + messageAddendum + "&nbsp;publications " 
+                      + "at Pubmed " + " published in the last <b>" + period + "</b> month(s):"
                       +"</span>";
             pubmedLink = " <a href=\"" + pubmedUrl + "\"  target=\"_blank\"> (Link to Pubmed) </a>";
             //htmlContent += message + "<br/><br/>";            

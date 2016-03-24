@@ -4,7 +4,7 @@
 //  Module: arachis_recent_pubs
 
 // Sudhansu Dash
-// 2016 Feb 29
+// 2016 March 24
 
 
 /**
@@ -42,10 +42,6 @@ function arachis_recent_pubs_theme() {
  */
 
 function arachis_recent_pubs_page_callback() {
-    
-    //$genus = "Arachis";
     $period = 3;
-    
-    return theme ('arachis_recent_pubs_page_template', array(/*'genus'=>$genus, */'period'=>$period)); 
-
+    return theme ('arachis_recent_pubs_page_template', array('period'=>$period)); 
 }
