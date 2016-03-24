@@ -1,1 +1,1 @@
-# lis_legume_recent_pubs
+# arachis_recent_pubs

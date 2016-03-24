@@ -1,0 +1,10 @@
+name = arachis_recent_pubs
+description = List recent publications on legumes from Pubmed via Eutils and JS http requests.
+core = 7.x
+files[] = arachis_recent_pubs.module
+
+package = LIS
+;dependencies[] = 
+;dependencies[] = 
+;files[] = 
+;configure = 
