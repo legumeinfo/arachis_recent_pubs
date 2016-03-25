@@ -16,13 +16,16 @@
             <b>Period:</b>&nbsp;&nbsp;
             <input type="radio" name="period" value="1"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="period" value="3"  checked="checked"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 3 months&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="period" value="6"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 6 months
+            <input type="radio" name="period" value="6"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 6 months &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="period" value="12"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 1 year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="period" value="24"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 2 years
     </form>
     </fieldset>
     
   <!-- <p style="font-size:70%"></p> -->
 
-For other legume species visit <a href="http://legumeinfo.org/publications/arachis_recent_pubs" target="_blank">Recent Legume Publications</a> at our sister site, LIS.
+For other legume species visit <a href="http://legumeinfo.org/publications/lis_legume_recent_pubs" target="_blank">Recent Legume Publications</a> at our sister site, LIS.
 <br/>
 <span style="font-size: 80%;">
   <strong>**Please note:</strong> Our search strategy excludes articles containing the terms, allerg*, toxi*, Asperg* and animal* in the title and abstract.  This helps us avoid listing many, not all, bio-medical and clinical articles from Pubmed.
