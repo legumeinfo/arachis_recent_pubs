@@ -92,7 +92,7 @@ function FillDomElementWithRecentPubsHtml (period, domElementId) {
     var htmlContent = "";
 
     //Construct Esearch URL
-    var BaseUrlEsearch = "http:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json";
+    var BaseUrlEsearch = "http:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json" + "&retmax=10000";
     var searchTerm = "("+ "(Arachis[Title/Abstract]" + "+NOT+" + "(Allerg*[Title/Abstract]+OR+toxi*[Title/Abstract]+OR+Asperg*[Title/Abstract]+OR+animal*[Title/Abstract])";
     var query = "&" + "term=" + searchTerm + "+AND+" + "\"last+" + period + "+months\"[PDat]" + ")";
     var UrlEsearch = BaseUrlEsearch + query; //returns json obj

@@ -21,7 +21,7 @@
             <input type="radio" name="period" value="12"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 1 year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="period" value="24"  onclick="FillDomElementWithRecentPubsHtml (this.value, 'publications');">&nbsp;&nbsp;Last 2 years
     </form>
-    </fieldset>
+  </fieldset>
     
   <!-- <p style="font-size:70%"></p> -->
 
