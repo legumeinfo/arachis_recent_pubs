@@ -54,12 +54,12 @@ function makeHtmlFromEsummaryJson(esummaryJson) {
         var source = esummaryResult[uid]['source']; //console.log(source);
         var volume = esummaryResult[uid]['volume']; //console.log(volume);
         
-        var linkToUid = "<a href=\"http://www.ncbi.nlm.nih.gov/pubmed/" + uid + "\"" + "  target=\"_blank\">" + title + "</a>";
+        var linkToUid = "<a href=\"https://www.ncbi.nlm.nih.gov/pubmed/" + uid + "\"" + "  target=\"_blank\">" + title + "</a>";
         
         var citation = (authors.join(", ") + ". " + "<b>" + year + "</b>" + ". " + linkToUid + " " + "<strong>" + source + " " + volume +  issue + ":" + pages + "</strong>" + "." + " (" + uid + ")");
         var citation_li = "<li>" + citation + "</li><br/>"; // + "\n\n";
         //Creates like:
-        //Dash S, Campbell JD, Cannon EK, Cleary AM, ......, Farmer AD, Cannon SB. 2016. Legume information system (LegumeInfo.org): a key component of a set of federated data resources for the legume family. Nucleic Acids Res 44(D1):D1181-8. (<a href="http://www.ncbi.nlm.nih.gov/pubmed/26546515"  target="_blank">26546515</a>)
+        //Dash S, Campbell JD, Cannon EK, Cleary AM, ......, Farmer AD, Cannon SB. 2016. Legume information system (LegumeInfo.org): a key component of a set of federated data resources for the legume family. Nucleic Acids Res 44(D1):D1181-8. (<a href="https://www.ncbi.nlm.nih.gov/pubmed/26546515"  target="_blank">26546515</a>)
         //console.log("citation_li: " + citation_li); //debug
         citation_html += citation_li; 
         
@@ -92,7 +92,7 @@ function FillDomElementWithRecentPubsHtml (period, domElementId) {
     var htmlContent = "";
 
     //Construct Esearch URL
-    var BaseUrlEsearch = "http:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json" + "&retmax=10000";
+    var BaseUrlEsearch = "https:" + "//eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?" + "db=Pubmed" + "&retmode=json" + "&retmax=10000";
     var searchTerm = "("+ "(Arachis[Title/Abstract]" + "+NOT+" + "(Allerg*[Title/Abstract]+OR+toxi*[Title/Abstract]+OR+Asperg*[Title/Abstract]+OR+animal*[Title/Abstract])";
     var query = "&" + "term=" + searchTerm + "+AND+" + "\"last+" + period + "+months\"[PDat]" + ")";
     var UrlEsearch = BaseUrlEsearch + query; //returns json obj
@@ -143,12 +143,12 @@ function FillDomElementWithRecentPubsHtml (period, domElementId) {
         
         //Pass Esearch Idlist to get Esummary
 //CAUTION:   If too many Ids, fails. "XMLHttpRequest cannot load ......    The response had HTTP status code 502. "         
-        var esummaryUrl = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json" + "&id="
+        var esummaryUrl = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json" + "&id="
                            + esearchIdlist.join();
         console.log("esummaryUrl: " + esummaryUrl); //debug
         jQuery.get(esummaryUrl,status, function(esummaryJson){
             
-            var pubmedUrl = "http://www.ncbi.nlm.nih.gov/pubmed/" + esearchIdlist900Max.join();
+            var pubmedUrl = "https://www.ncbi.nlm.nih.gov/pubmed/" + esearchIdlist900Max.join();
             console.log("pubmedUrl: " + pubmedUrl);
             
             message = "<span>" + "Found&nbsp;<b>" + esearchCount + "</b>" + messageAddendum + "&nbsp;publications " 
